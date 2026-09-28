@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title><?= $title ?></title>
@@ -10,11 +13,44 @@
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet"
         crossorigin="anonymous">
+
+    <style>
+
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .navbar {
+            background-color: #343a40;
+        }
+
+        .card {
+            border-radius: 8px;
+        }
+
+        .table th {
+            font-weight: 600;
+        }
+
+        footer {
+            background-color: #343a40;
+        }
+
+    </style>
+
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 
-    @yield('content')
+    <x-navbar />
+
+    <main class="flex-grow-1">
+
+        @yield('content')
+
+    </main>
+
+    <x-footer />
 
     <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -22,4 +58,5 @@
     </script>
 
 </body>
+
 </html>

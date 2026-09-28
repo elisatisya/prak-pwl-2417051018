@@ -2,28 +2,26 @@
 
 @section('content')
 
-<h1>Daftar Pengguna</h1>
+<div class="container py-5">
 
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nama</th>
-            <th>NPM</th>
-            <th>Kelas</th>
-        </tr>
-    </thead>
+    <div class="d-flex justify-content-between align-items-center mb-4">
 
-    <tbody>
-        @foreach ($users as $user)
-            <tr>
-                <td>{{ $user->id }}</td>
-                <td>{{ $user->nama }}</td>
-                <td>{{ $user->nim }}</td>
-                <td>{{ $user->nama_kelas }}</td>
-            </tr>
-        @endforeach
-    </tbody>
-</table>
+        <div>
+            <h1 class="fw-bold mb-2">Daftar Pengguna</h1>
+
+            <p class="text-muted mb-0">
+                Data pengguna yang telah terdaftar.
+            </p>
+        </div>
+
+        <a href="{{ route('user.create') }}" class="btn btn-primary px-4">
+            + Tambah Pengguna
+        </a>
+
+    </div>
+
+    <x-user-table :users="$users" />
+
+</div>
 
 @endsection
