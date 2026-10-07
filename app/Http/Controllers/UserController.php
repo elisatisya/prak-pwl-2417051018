@@ -48,8 +48,48 @@ class UserController extends Controller
             'kelas_id' => $request->kelas_id,
         ];
 
-        $this->userModel->insert($data);
+        $this->userModel->create($data);
 
         return redirect('/user');
+    }
+
+    public function edit($id)
+    {
+        $user = $this->userModel->findOrFail($id);
+
+        $kelasModel = new Kelas();
+        $kelas = $kelasModel->getKelas();
+
+        $data = [
+            'title' => 'Edit User',
+            'user' => $user,
+            'kelas' => $kelas,
+        ];
+
+        return view('edit_user', $data);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $user = $this->userModel->findOrFail($id);
+
+        $data = [
+            'nama' => $request->nama,
+            'npm' => $request->npm,
+            'kelas_id' => $request->kelas_id,
+        ];
+
+        $user->update($data);
+
+        return redirect('/user')->with('success', 'Data pengguna berhasil diperbarui!');
+    }
+
+    public function destroy($id)
+    {
+        $user = $this->userModel->findOrFail($id);
+
+        $user->delete();
+
+        return redirect('/user')->with('success', 'Data pengguna berhasil dihapus!');   
     }
 }

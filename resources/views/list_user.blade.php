@@ -4,6 +4,18 @@
 
 <div class="container py-5">
 
+    @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Berhasil!</strong> {{ session('success') }}
+
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Close">
+            </button>
+        </div>
+    @endif
+
     <div class="d-flex justify-content-between align-items-center mb-4">
 
         <div>
